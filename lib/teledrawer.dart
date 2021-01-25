@@ -5,6 +5,7 @@ import 'package:telegram/Contact.dart';
 import 'package:telegram/Faq.dart';
 import 'package:telegram/drawerlist.dart';
 import 'package:telegram/peopleNearMe.dart';
+import 'package:telegram/settings.dart';
 
 
 class Teledrawer extends StatelessWidget {
@@ -33,12 +34,22 @@ class Teledrawer extends StatelessWidget {
                         
                      
                             Positioned( top: 50,left: 15,
-                              child:Container(
+                              child:FlatButton(
+                                onPressed: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Settings();
+                                }),
+                              );
+                            },
+                                child: Container(
                               width: 65,
                               height: 65,
                               // color: Colors.deepPurple,
                               child: CircleAvatar(backgroundImage: AssetImage('assets/user.png'), radius: 35.0,),
-                            )
+                            ),
+                              )
                         
                             ),
                        
@@ -126,6 +137,15 @@ class Teledrawer extends StatelessWidget {
                       drawerlist(
                            iconmake: OMIcons.settings,
                            listname: "Settings",
+                           whenclick: ()
+                           {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Settings();
+                                }),
+                              );
+                            },
                       ),
                       drawerlist(
                         

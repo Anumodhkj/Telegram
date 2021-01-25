@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:telegram/chatScreen.dart';
 import 'package:telegram/teledrawer.dart';
 
 void main() {
@@ -38,7 +39,12 @@ class Protop extends StatelessWidget {
             leading: CircleAvatar(backgroundImage: AssetImage('assets/user.png'),radius: 27.0,),
             trailing: Text("Mon", style: TextStyle(fontSize: 12),),
             onTap: () {
-              
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return ChatScreen();
+                }),
+              );
             },
           ),
 
