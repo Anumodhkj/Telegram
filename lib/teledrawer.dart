@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:outline_material_icons/outline_material_icons.dart';
 import 'package:telegram/Contact.dart';
+import 'package:telegram/Faq.dart';
 import 'package:telegram/drawerlist.dart';
 import 'package:telegram/peopleNearMe.dart';
 
@@ -127,8 +128,18 @@ class Teledrawer extends StatelessWidget {
                            listname: "Settings",
                       ),
                       drawerlist(
+                        
                            iconmake: OMIcons.helpOutline,
                            listname: "Telegram FAQ",
+                           whenclick: ()
+                           {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) {
+                                  return Faq();
+                                }),
+                              );
+                            },
                       ),
                       
 
