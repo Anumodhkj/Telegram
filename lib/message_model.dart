@@ -68,10 +68,34 @@ List<Message> chats = [
 
 // EXAMPLE MESSAGES IN CHAT SCREEN
 List<Message> messages = [
+   Message(
+    sender:currentUser,
+    time: '5:44 PM',
+    text: 'OK! Bye',
+    unread: true,
+  ),
+   Message(
+    sender: ironMan,
+    time: '5:40 PM',
+    text: 'See you soon',
+    unread: true,
+  ),
+   Message(
+    sender: currentUser,
+    time: '5:35 PM',
+    text: 'Make it fast. We cant handle this much stress for long time ',
+    unread: true,
+  ),
+   Message(
+    sender: currentUser,
+    time: '5:34 PM',
+    text: 'Okay, We are waiting for you to get here ',
+    unread: true,
+  ),
   Message(
     sender: ironMan,
-    time: '5:30 PM',
-    text: 'Hey dude! Event dead I\'m the hero. Love you 3000 guys.',
+    time: '5:33 PM',
+    text: 'I will try to get there as soon as possible',
     unread: true,
   ),
   Message(

@@ -113,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
                             padding: EdgeInsets.only(top: 5),
                           ),
                           Text(
-                            'On',
+                            'Off',
                             style: TextStyle(color: Colors.grey),
                           ),
                         ],
