@@ -15,16 +15,16 @@ class User {
 // YOU - current user
 final User currentUser = User(
   id: 0,
-  name: 'Nick Fury',
-  imageUrl: 'assets/images/nick-fury.jpg',
+  name: 'Akhil Jose ',
+  imageUrl: 'assets/ninja.png',
   isOnline: true,
 );
 
 // USERS
 final User ironMan = User(
   id: 1,
-  name: 'Iron Man',
-  imageUrl: 'assets/images/ironman.jpeg',
+  name: 'Anumodh K J',
+  imageUrl: 'assets/user.png',
   isOnline: true,
 );
 final User captainAmerica = User(

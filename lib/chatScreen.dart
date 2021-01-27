@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:telegram/main.dart';
 import 'package:telegram/profile.dart';
-// import 'package:bubble/bubble.dart';
+import 'package:bubble/bubble.dart';
 import 'package:telegram/user_model.dart';
 import 'package:telegram/message_model.dart';
-
-void main() {
-  runApp(MaterialApp(
-    home: ChatScreen(),
-  ));
-}
 
 class ChatScreen extends StatefulWidget {
   final User user;
@@ -23,72 +17,73 @@ class ChatScreen extends StatefulWidget {
 class _ChatScreenState extends State<ChatScreen> {
   _chatBubble(Message message, bool isMe, bool isSameUser) {
     if (isMe) {
-      return Column(
-        children: <Widget>[
-          Container(
-            alignment: Alignment.topRight,
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * 0.80,
-              ),
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.symmetric(vertical: 10),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(15),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                  ),
-                ],
-              ),
-              child: Text(
-                message.text,
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-          !isSameUser
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Text(
-                      message.time,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black45,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 2,
-                            blurRadius: 5,
+      return Column(children: <Widget>[
+        Container(
+          alignment: Alignment.topRight,
+          child: Bubble(
+            alignment: Alignment.centerRight,
+            nipWidth: 8,
+            nipHeight: 4.8,
+            nipRadius: .5,
+            radius: Radius.circular(10.0),
+            margin: BubbleEdges.only(top: 10, left: 30),
+            nip: BubbleNip.rightBottom,
+            color: Color.fromRGBO(229, 249, 211, 1),
+            child: Column(children: [
+              Text(message.text, textAlign: TextAlign.left),
+
+              // return Column(
+              //   children: <Widget>[
+              //     Container(
+              //       alignment: Alignment.topRight,
+              //       child: Container(
+              //         constraints: BoxConstraints(
+              //           maxWidth: MediaQuery.of(context).size.width * 0.80,
+              //         ),
+              //         padding: EdgeInsets.all(10),
+              //         margin: EdgeInsets.symmetric(vertical: 10),
+              //         decoration: BoxDecoration(
+              //           color: Theme.of(context).primaryColor,
+              //           borderRadius: BorderRadius.circular(15),
+              //           boxShadow: [
+              //             BoxShadow(
+              //               color: Colors.grey.withOpacity(0.5),
+              //               spreadRadius: 2,
+              //               blurRadius: 5,
+              //             ),
+              //           ],
+              //         ),
+              //         child: Text(
+              //           message.text,
+              //           style: TextStyle(
+              //             color: Colors.white,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              !isSameUser
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          message.time,
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.black45,
                           ),
-                        ],
-                      ),
-                      child: CircleAvatar(
-                        radius: 15,
-                        backgroundImage: AssetImage(message.sender.imageUrl),
-                      ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    ):
+                   Container(
+                      child: null,
                     ),
-                  ],
-                )
-              : Container(
-                  child: null,
-                ),
-        ],
-      );
+            ]),
+          ),
+        ),
+      ]);
     } else {
       return Column(
         children: <Widget>[
@@ -201,11 +196,11 @@ class _ChatScreenState extends State<ChatScreen> {
         leading: BackButton(
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return Protop();
-                }),
-              );
+              context,
+              MaterialPageRoute(builder: (context) {
+                return Protop();
+              }),
+            );
           },
         ),
         title: TextButton(
@@ -213,7 +208,7 @@ class _ChatScreenState extends State<ChatScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return Profile();
+                  return ProfileScreen();
                 }),
               );
             },
@@ -245,37 +240,37 @@ class _ChatScreenState extends State<ChatScreen> {
                     ]),
               ],
             )),
-      ),);
-//       body: Column(
-//         children: <Widget>[
-//           Expanded(
-//             child: ListView.builder(
-//               reverse: true,
-//               padding: EdgeInsets.all(20),
-//               itemCount: messages.length,
-//               itemBuilder: (BuildContext context, int index) {
-//                 final Message message = messages[index];
-//                 final bool isMe = message.sender.id == currentUser.id;
-//                 final bool isSameUser = prevUserId == message.sender.id;
-//                 prevUserId = message.sender.id;
-//                 return _chatBubble(message, isMe, isSameUser);
-//               },
-//             ),
-//           ),
-//           _sendMessageArea(),
-//         ],
-//       ),
-//     );
-//   }
-// }
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: ListView.builder(
+              reverse: true,
+              padding: EdgeInsets.all(20),
+              itemCount: messages.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Message message = messages[index];
+                final bool isMe = message.sender.id == currentUser.id;
+                final bool isSameUser = prevUserId == message.sender.id;
+                prevUserId = message.sender.id;
+                return _chatBubble(message, isMe, isSameUser);
+              },
+            ),
+          ),
+          _sendMessageArea(),
+        ],
+      ),
+    );
+  }
+}
 
-// class Chatscreen extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     final height = MediaQuery.of(context).size.height -
-//         MediaQuery.of(context).padding.top -
-//         kToolbarHeight;
-//     final width = MediaQuery.of(context).size.width;
+class Chatscreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height -
+        MediaQuery.of(context).padding.top -
+        kToolbarHeight;
+    final width = MediaQuery.of(context).size.width;
 
 //     return Scaffold(
 //       appBar: AppBar(
@@ -534,4 +529,5 @@ class _ChatScreenState extends State<ChatScreen> {
 //     ],
 //   ),
 // )
-  }}
+  }
+}
