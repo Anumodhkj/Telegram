@@ -92,11 +92,11 @@ class Teledrawer extends StatelessWidget {
                       ),
 
 
-                      drawerlist(
+                      Drawerlist(
                            iconmake: OMIcons.group,
                            listname: "New Group",
                       ),
-                     drawerlist(
+                     Drawerlist(
                            iconmake: OMIcons.contacts,
                            listname: "Contacts",
                            whenclick: ()
@@ -111,11 +111,11 @@ class Teledrawer extends StatelessWidget {
                                                    
                            
                       ),
-                      drawerlist(
+                      Drawerlist(
                            iconmake: OMIcons.call,
                            listname: "Calls",
                       ),
-                      drawerlist(
+                      Drawerlist(
                            iconmake: OMIcons.nearMe,
                            listname: "People Nearby",
                             whenclick: ()
@@ -130,11 +130,11 @@ class Teledrawer extends StatelessWidget {
                       ),
 
 
-                      drawerlist(
+                      Drawerlist(
                            iconmake: OMIcons.bookmarkBorder,
                            listname: "Saved messages",
                       ),
-                      drawerlist(
+                      Drawerlist(
                            iconmake: OMIcons.settings,
                            listname: "Settings",
                            whenclick: ()
@@ -147,7 +147,7 @@ class Teledrawer extends StatelessWidget {
                               );
                             },
                       ),
-                      drawerlist(
+                      Drawerlist(
                         
                            iconmake: OMIcons.helpOutline,
                            listname: "Telegram FAQ",

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:telegram/main.dart';
 import 'package:telegram/profile.dart';
-import 'package:telegram/settings.dart';
 // import 'package:bubble/bubble.dart';
 import 'package:telegram/user_model.dart';
 import 'package:telegram/message_model.dart';

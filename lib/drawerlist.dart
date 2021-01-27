@@ -1,13 +1,13 @@
 
 import 'package:flutter/material.dart';
 
-class drawerlist extends StatelessWidget {
+class Drawerlist extends StatelessWidget {
 
    final IconData iconmake;
    final String   listname;
    final void Function() whenclick;
 
- drawerlist({this.iconmake, this.listname,this.whenclick});
+ Drawerlist({this.iconmake, this.listname,this.whenclick});
 
 
   @override
