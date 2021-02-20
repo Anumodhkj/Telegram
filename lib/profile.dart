@@ -146,7 +146,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     Container(
                       padding: EdgeInsets.all(20),
                       width: double.infinity,
-                      height: MediaQuery.of(context).size.height * .284,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
